@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/gregimba/room.js/issues"
   },
-  "homepage": "https://github.com/gregimba/room.js#readme"
+  "homepage": "https://github.com/gregimba/room.js#readme",
+  "dependencies": {
+    "huejay": "^1.8.0"
+  }
 }
