@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/gregimba/room.js#readme",
   "dependencies": {
-    "huejay": "^1.8.0"
+    "huejay": "^1.8.0",
+    "openweather-apis": "^3.3.5"
   }
 }
