@@ -7,13 +7,10 @@ weather.setZipCode(78701);
 weather.setUnits('imperial');
 weather.setAPPID(config.openweather);
 
-
-
 function getWeather() {
-  return new Promise((resolve,reject) => {
+  return new Promise((resolve, reject) => {
     weather.getAllWeather((err, JSONObj) => {
       resolve(JSONObj);
-
       reject(err);
     });
   });
@@ -24,4 +21,6 @@ function getSunValues(value) {
   console.log("sunset => " + new Date(value.sys.sunset * 1000))
 }
 
-getWeather().then((currentWeather) => getSunValues(currentWeather));
+getWeather()
+  .then((res) => getSunValues(res),
+    (err) => console.log("rejected: ", err));
