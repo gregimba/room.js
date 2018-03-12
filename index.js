@@ -1,4 +1,6 @@
 let weather = require('openweather-apis');
+let huejay = require('huejay');
+
 const config = require('./config')
 
 //intial api config
@@ -17,9 +19,11 @@ function getWeather() {
 }
 
 function getSunValues(value) {
-  console.log("Sunrise => " + new Date(value.sys.sunrise * 1000))
+  console.log("sunrise => " + new Date(value.sys.sunrise * 1000))
   console.log("sunset => " + new Date(value.sys.sunset * 1000))
 }
+
+huejay.discover({strategy: 'all'}).then(bridges => console.log(bridges));
 
 getWeather()
   .then((res) => getSunValues(res),
