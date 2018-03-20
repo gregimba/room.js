@@ -9,7 +9,7 @@ weather.setZipCode(78701);
 weather.setUnits('imperial');
 weather.setAPPID(config.openweather);
 
-function getWeather() {
+getWeather () => {
   return new Promise((resolve, reject) => {
     weather.getAllWeather((err, JSONObj) => {
       resolve(JSONObj);
@@ -18,12 +18,10 @@ function getWeather() {
   });
 }
 
-function getSunValues(value) {
+getSunValues (value) => {
   console.log("sunrise => " + new Date(value.sys.sunrise * 1000))
   console.log("sunset => " + new Date(value.sys.sunset * 1000))
 }
-
-huejay.discover({strategy: 'all'}).then(bridges => console.log(bridges));
 
 getWeather()
   .then((res) => getSunValues(res),
