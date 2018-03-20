@@ -1,6 +1,7 @@
 let huejay = require('huejay');
 
 function createUser(ip) {
+  console.log(`Hue found at: ${ip}`);
   let client = new huejay.Client({
     host: ip,
     port: 80, // Optional
