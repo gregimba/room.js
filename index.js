@@ -9,6 +9,7 @@ weather.setZipCode(78701);
 weather.setUnits('imperial');
 weather.setAPPID(config.openweather);
 
+//inital hue client
 let client = new huejay.Client({
   host:     config.hue,
   port:     80,               // Optional
@@ -16,7 +17,7 @@ let client = new huejay.Client({
   timeout:  15000,            // Optional, timeout in milliseconds (15000 is the default)
 });
 
-
+//get weather via openweather
 getWeather  => {
   return new Promise((resolve, reject) => {
     weather.getAllWeather((err, JSONObj) => {
@@ -26,14 +27,18 @@ getWeather  => {
   });
 }
 
+//parse and log sunrise and sunset
 getSunValues: (value) => {
   console.log("sunrise => " + new Date(value.sys.sunrise * 1000))
   console.log("sunset => " + new Date(value.sys.sunset * 1000))
 }
 
-// getWeather()
-//   .then((res) => getSunValues(res),
-//     (err) => console.log("rejected: ", err));
+//promise for weather api call
+getWeather()
+  .then((res) => getSunValues(res),
+    (err) => console.log("rejected: ", err));
+
+//set default light cycle
 client.groups.getById(1)
   .then(group => {
     console.log(`Saving group...`);
