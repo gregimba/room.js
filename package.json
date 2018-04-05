@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/gregimba/room.js.git"
   },
-  "keywords": ["hue", "home", "automation"],
+  "keywords": [
+    "hue",
+    "home",
+    "automation"
+  ],
   "author": "Grant Regimbal",
   "license": "MIT",
   "bugs": {
