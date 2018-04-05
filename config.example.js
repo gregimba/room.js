@@ -1,5 +1,6 @@
 module.exports = {
-  openweather: "",
-  user: "",
-  hue: "",
+  openweather: '',
+  user: '',
+  hue: '',
+  zip: ''
 };
