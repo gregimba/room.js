@@ -6,10 +6,11 @@ function createUser(ip) {
     host: ip,
     port: 80, // Optional
     username: 'macbook', // Optional
-    timeout: 15000, // Optional, timeout in milliseconds (15000 is the default)
+    timeout: 15000 // Optional, timeout in milliseconds (15000 is the default)
   });
-  let user = new client.users.User;
-  client.users.create(user)
+  let user = new client.users.User();
+  client.users
+    .create(user)
     .then(user => {
       console.log(`New user created - Username: ${user.username}`);
     })
@@ -22,7 +23,8 @@ function createUser(ip) {
     });
 }
 
-huejay.discover({
+huejay
+  .discover({
     strategy: 'all'
   })
   .then(bridges => createUser(bridges[0].ip));
