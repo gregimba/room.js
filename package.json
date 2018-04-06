@@ -12,9 +12,17 @@
     "url": "git+https://github.com/gregimba/room.js.git"
   },
   "babel": {
-    "presets": ["env", "react", "stage-2"]
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ]
   },
-  "keywords": ["hue", "home", "automation"],
+  "keywords": [
+    "hue",
+    "home",
+    "automation"
+  ],
   "author": "Grant Regimbal",
   "license": "MIT",
   "bugs": {
@@ -22,6 +30,7 @@
   },
   "homepage": "https://github.com/gregimba/room.js#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
