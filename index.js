@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { getWeather } = require('./helpers/weather');
+const { getSong } = require('./helpers/spotify');
 const hue = require('./helpers/hue');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -30,6 +31,10 @@ app.post('/toggle', (req, res) => {
 
 app.get('/weather', (req, res) => {
   getWeather().then(data => res.json(data));
+});
+
+app.get('/spotify', (req, res) => {
+  getSong().then(data => res.json(JSON.parse(data.body)));
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
