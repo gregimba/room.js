@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { spotify: false };
+    this.reloadCurrentSpotify = this.reloadCurrentSpotify.bind(this);
   }
   componentDidMount() {
     this.reloadCurrentSpotify();
@@ -15,7 +16,9 @@ class App extends React.Component {
     axios
       .get('/spotify')
       .then(body => {
-        console.log(body.data.item.duration_ms - body.data.progress_ms);
+        let next_call_ms = (body.data.item.duration_ms - body.data.progress_ms + 100);
+        console.log(next_call_ms);
+        let timeout = window.setTimeout(this.reloadCurrentSpotify, next_call_ms);
         this.setState({ spotify: body });
       })
       .catch(error => {
