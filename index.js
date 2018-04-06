@@ -28,4 +28,8 @@ app.post('/toggle', (req, res) => {
   res.json({ toggle: req.body.toggle });
 });
 
+app.get('/weather', (req, res) => {
+  getWeather().then(data => res.json(data));
+});
+
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
