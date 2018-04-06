@@ -1,10 +1,10 @@
+require('dotenv').config();
 const huejay = require('huejay');
-const config = require('../config');
 
 const client = new huejay.Client({
-  host: config.hue,
+  host: process.env.hue,
   port: 80,
-  username: config.user,
+  username: process.env.user,
   timeout: 15000
 });
 

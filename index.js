@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { getWeather } = require('./helpers/weather');
 const hue = require('./helpers/hue');
 const express = require('express');
