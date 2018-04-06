@@ -8,10 +8,14 @@ class App extends React.Component {
     this.state = { spotify: false };
   }
   componentDidMount() {
+    this.reloadCurrentSpotify();
+  }
+
+  reloadCurrentSpotify() {
     axios
       .get('/spotify')
       .then(body => {
-        console.log(body);
+        console.log(body.data.item.duration_ms - body.data.progress_ms);
         this.setState({ spotify: body });
       })
       .catch(error => {
@@ -21,16 +25,16 @@ class App extends React.Component {
 
   render() {
     if (this.state.spotify !== false) {
-      const songArtists = this.state.spotify.data.item.artists.map((artist) =>
+      const songArtists = this.state.spotify.data.item.artists.map(artist => (
         <li>{artist.name}</li>
-      );
+      ));
       const songName = this.state.spotify.data.item.name;
       return (
         <div>
-        <h1>{songName}</h1>
-        <ul>{songArtists}</ul>
+          <h1>{songName}</h1>
+          <ul>{songArtists}</ul>
         </div>
-      )
+      );
     } else {
       return <h1> Loading </h1>;
     }
