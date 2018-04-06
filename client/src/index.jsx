@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+
+
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
-      <div>
-        <h1>Github Fetcher</h1>
-      </div>
-
+      <h1>  World! </h1>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />,  document.getElementById('app'));
