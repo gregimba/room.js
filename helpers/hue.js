@@ -5,18 +5,18 @@ const client = new huejay.Client({
   host: process.env.hue,
   port: 80,
   username: process.env.user,
-  timeout: 15000
+  timeout: 15000,
 });
 
-toggle = which => {
+toggle = (which) => {
   client.groups
     .getById(1)
-    .then(group => {
+    .then((group) => {
       group.on = which;
       return client.groups.save(group);
     })
-    .then(group => {})
-    .catch(error => {
+    .then((group) => {})
+    .catch((error) => {
       console.log(error.stack);
     });
 };
@@ -24,36 +24,36 @@ toggle = which => {
 rainbow = () => {
   client.groups
     .getById(1)
-    .then(group => {
+    .then((group) => {
       group.on = true;
       group.effect = 'colorloop';
       group.brightness = 50;
       return client.groups.save(group);
     })
-    .then(group => {})
-    .catch(error => {
+    .then((group) => {})
+    .catch((error) => {
       console.log(error.stack);
     });
 };
 
-lightStatus = callback => {
-  client.groups.getById(1).then(group => {
+lightStatus = (callback) => {
+  client.groups.getById(1).then((group) => {
     callback(group.action.attributes);
   });
 };
 
-setLights = color => {
+setLights = (color) => {
   client.groups
     .getById(1)
-    .then(group => {
+    .then((group) => {
       group.on = true;
-      group.brightness = color.brightness; //0-254
-      group.hue = color.hue; //0 to 65535
-      group.saturation = color.saturation; //0-254
+      group.brightness = color.brightness; // 0-254
+      group.hue = color.hue; // 0 to 65535
+      group.saturation = color.saturation; // 0-254
       return client.groups.save(group);
     })
-    .then(group => {})
-    .catch(error => {
+    .then((group) => {})
+    .catch((error) => {
       console.log(error.stack);
     });
 };

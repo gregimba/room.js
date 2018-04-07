@@ -36,14 +36,17 @@ class Spotify extends React.Component {
         <li>{artist.name}</li>
       ));
       const songName = this.state.spotify.data.item.name;
+      const songImg = <img src={this.state.spotify.data.item.album.images[1].url}></img>;
       return (
         <div>
-          <h1>{songName}</h1>
+          {songImg}
+          <h3>{songName}</h3>
+          <h5>Artists:</h5>
           <ul>{songArtists}</ul>
         </div>
       );
     } else {
-      return <h1> Loading spotify </h1>;
+      return <div class="lds-dual-ring"></div>;
     }
   }
 }

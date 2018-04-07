@@ -2,7 +2,7 @@ require('dotenv').config();
 const weather = require('openweather-apis');
 const util = require('util');
 
-//intial api config
+// intial api config
 weather.setLang('en');
 weather.setZipCode(process.env.zip);
 weather.setUnits('imperial');

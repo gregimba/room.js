@@ -9,37 +9,35 @@ function log(error, response, body) {
 }
 
 getCurrentlyPlaying = (token, callback) => {
-  let options = {
+  const options = {
     url: 'https://api.spotify.com/v1/me/player/currently-playing?market=ES',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   };
   request(options, callback);
 };
 
 getAccessToken = (refresh_token, callback) => {
-  var authOptions = {
+  const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       Authorization:
-        'Basic ' +
-        new Buffer(
-          process.env.client_id + ':' + process.env.client_secret
-        ).toString('base64')
+        `Basic ${
+          new Buffer(`${process.env.client_id}:${process.env.client_secret}`).toString('base64')}`,
     },
     form: {
       grant_type: 'refresh_token',
-      refresh_token: refresh_token
+      refresh_token,
     },
-    json: true
+    json: true,
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      var access_token = body.access_token;
+      const access_token = body.access_token;
       callback(access_token);
     } else {
       console.log(error);
@@ -47,8 +45,8 @@ getAccessToken = (refresh_token, callback) => {
   });
 };
 
-getSong = callback => {
-  getAccessToken(process.env.refresh_token, token => {
+getSong = (callback) => {
+  getAccessToken(process.env.refresh_token, (token) => {
     getCurrentlyPlaying(token, callback);
   });
 };

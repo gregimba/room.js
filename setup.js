@@ -1,22 +1,22 @@
-let huejay = require('huejay');
+const huejay = require('huejay');
 
 function createUser(ip) {
   console.log(`Hue found at: ${ip}`);
-  let client = new huejay.Client({
+  const client = new huejay.Client({
     host: ip,
     port: 80, // Optional
     username: 'macbook', // Optional
-    timeout: 15000 // Optional, timeout in milliseconds (15000 is the default)
+    timeout: 15000, // Optional, timeout in milliseconds (15000 is the default)
   });
-  let user = new client.users.User();
+  const user = new client.users.User();
   client.users
     .create(user)
-    .then(user => {
+    .then((user) => {
       console.log(`New user created - Username: ${user.username}`);
     })
-    .catch(error => {
+    .catch((error) => {
       if (error instanceof huejay.Error && error.type === 101) {
-        return console.log(`Link button not pressed. Try again...`);
+        return console.log('Link button not pressed. Try again...');
       }
 
       console.log(error.stack);
@@ -25,6 +25,6 @@ function createUser(ip) {
 
 huejay
   .discover({
-    strategy: 'all'
+    strategy: 'all',
   })
   .then(bridges => createUser(bridges[0].ip));

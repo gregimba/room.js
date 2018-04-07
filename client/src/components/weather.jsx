@@ -11,11 +11,11 @@ class Weather extends React.Component {
   }
 
   componentDidMount() {
-    this.reload()
+    this.reload();
     setInterval(this.reload, 120000);
   }
   reload() {
-    console.log("getting weather");
+    console.log('getting weather');
     axios
       .get('/weather')
       .then(body => {
@@ -27,10 +27,16 @@ class Weather extends React.Component {
   }
   render() {
     if (this.state.weather !== false) {
-      const test = <div>{this.state.weather.data.main.temp}F {this.state.weather.data.main.humidity}%H {this.state.weather.data.weather[0].description}</div>;
-      return test;
+      const page = (
+        <div>
+          <h3>{this.state.weather.data.main.temp}F</h3>
+          <h3>{this.state.weather.data.main.humidity}%H</h3>
+          <h3>{this.state.weather.data.weather[0].description}</h3>
+        </div>
+      );
+      return page;
     } else {
-      return <h1> loading </h1>;
+      return <div class="lds-dual-ring" />;
     }
   }
 }
