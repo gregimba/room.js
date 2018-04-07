@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Welcome from './components/welcome.jsx';
 import Spotify from './components/spotify.jsx';
+import Weather from './components/weather.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <Spotify />;
+    return (
+      <div>
+      <Weather />
+      <Spotify />
+      </div>
+    )
   }
 }
 
