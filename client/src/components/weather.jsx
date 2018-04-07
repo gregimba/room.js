@@ -15,7 +15,6 @@ class Weather extends React.Component {
     setInterval(this.reload, 120000);
   }
   reload() {
-    console.log('getting weather');
     axios
       .get('/weather')
       .then(body => {
